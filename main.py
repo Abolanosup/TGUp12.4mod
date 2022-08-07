@@ -536,6 +536,20 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /cloud (moodle or cloud)❌')
             return
+        if '/uptype' in msgText:
+            try:
+                cmd = str(msgText).split(' ',2)
+                type = cmd[1]
+                getUser = user_info
+                if getUser:
+                    getUser['uploadtype'] = type
+                    jdb.save_data_user(username,getUser)
+                    jdb.save()
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,statInfo)
+            except:
+                bot.sendMessage(update.message.chat.id,'#Error\nMissing 1 required positional argument: {type}')
+            return
         if '/proxy' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
