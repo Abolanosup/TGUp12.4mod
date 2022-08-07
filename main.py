@@ -685,6 +685,146 @@ def onmessage(update,bot:ObigramClient):
                 bot.editMessageText(message,'Archivo Borrado 🦶')
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
+        ###################################################################
+       
+        elif '/delete_config' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "--"
+            getUser['uploadtype'] =  "--"
+            getUser['moodle_user'] = "---"
+            getUser['moodle_password'] = "---"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 100
+            getUser['proxy'] = ""
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"🗑Configuracion Eliminada🗑")
+        elif '/delete_prox' in msgText: 
+            getUser = user_info
+            getUser['proxy'] = ""
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"🗑Proxy Eliminado🗑")
+        ###############################################################
+        
+        elif '/aulacened' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://aulacened.uci.cu/"
+            getUser['uploadtype'] =  "draft"
+            getUser['moodle_user'] = "---"
+            getUser['moodle_password'] = "---"
+            getUser['moodle_repo_id'] = 5
+            getUser['zips'] = 248
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Aulacened cargada")
+           
+        elif '/uclv' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://moodle.uclv.edu.cu/"
+            getUser['uploadtype'] =  "calendario"
+            getUser['moodle_user'] = "--"
+            getUser['moodle_password'] = "--"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 398
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Uclv cargada")
+        elif '/uvs' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://uvs.ucm.cmw.sld.cu/"
+            getUser['uploadtype'] =  "draft"
+            getUser['moodle_user'] = "msosa"
+            getUser['moodle_password'] = "Aa.940313"
+            getUser['moodle_repo_id'] = 5
+            getUser['zips'] = 50
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Uvs cargada")
+        elif '/evea' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://evea.uh.cu/"
+            getUser['uploadtype'] =  "calendarioevea"
+            getUser['moodle_user'] = "--"
+            getUser['moodle_password'] = "--"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 200
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Evea cargada")
+        
+        elif '/cursos' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://cursos.uo.edu.cu/"
+            getUser['uploadtype'] =  "calendario"
+            getUser['moodle_user'] = "---"
+            getUser['moodle_password'] = "---"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 98
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Cursos cargada")
+        
+        elif '/eva' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://eva.uo.edu.cu/"
+            getUser['uploadtype'] =  "draft"
+            getUser['moodle_user'] = "---"
+            getUser['moodle_password'] = "---."
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 98
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Eva cargada")
+        
+        elif "/reduc" in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://moodlepost.reduc.edu.cu/"
+            getUser['uploadtype'] =  "draft"
+            getUser['moodle_user'] = "alfredo.pernas1"
+            getUser['moodle_password'] = "Aa.940313"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 19
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de moodlepost.reduc cargada")
+            
+        elif '/eduvirtual' in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://eduvirtual.uho.edu.cu/"
+            getUser['uploadtype'] =  "blog"
+            getUser['moodle_user'] = ""
+            getUser['moodle_password'] = ""
+            getUser['moodle_repo_id'] = 3
+            getUser['zips'] = 8
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Eduvirtual cargada")
+        
+        elif "/gtm" in msgText:
+            getUser = user_info
+            getUser['moodle_host'] = "https://aulauvs.gtm.sld.cu/"
+            getUser['uploadtype'] =  "calendarioevea"
+            getUser['moodle_user'] = "aricuba"
+            getUser['moodle_password'] = "Ari.2021"
+            getUser['moodle_repo_id'] = 4
+            getUser['zips'] = 7
+            jdb.save_data_user(username,getUser)
+            jdb.save()
+            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+            bot.editMessageText(message,"✅Configuracion de Aula Guantanamo cargada")
+        ###################################################
+        
         elif '/eli' in msgText and user_info['cloudtype']=='moodle':
             contador = 0
             eliminados = 0
