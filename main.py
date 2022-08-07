@@ -777,13 +777,13 @@ def onmessage(update,bot:ObigramClient):
             getUser['moodle_host'] = "https://avucm.pri.sld.cu/"
             getUser['uploadtype'] =  "draft"
             getUser['moodle_user'] = "msosa"
-            getUser['moodle_password'] = "Asa.940313"
+            getUser['moodle_password'] = "Aaa.940313"
             getUser['moodle_repo_id'] = 5
             getUser['zips'] = 19
             jdb.save_data_user(username,getUser)
             jdb.save()
             statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-            bot.editMessageText(message,"✅Configuracion de Eva cargada")
+            bot.editMessageText(message,"✅Configuracion de moodle Pinar cargada")
         
         elif "/reduc" in msgText:
             getUser = user_info
@@ -809,7 +809,7 @@ def onmessage(update,bot:ObigramClient):
             jdb.save_data_user(username,getUser)
             jdb.save()
             statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-            bot.editMessageText(message,"✅Configuracion de Eduvirtual cargada")
+            bot.editMessageText(message,"✅Configuracion de cujae cargada")
         
         elif "/gtm" in msgText:
             getUser = user_info
