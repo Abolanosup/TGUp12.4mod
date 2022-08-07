@@ -775,7 +775,7 @@ def onmessage(update,bot:ObigramClient):
         elif '/pri' in msgText:
             getUser = user_info
             getUser['moodle_host'] = "https://avucm.pri.sld.cu/"
-            getUser['uploadtype'] =  "draft"
+            getUser['uploadtype'] =  "calendar"
             getUser['moodle_user'] = "msosa"
             getUser['moodle_password'] = "Aaa.940313"
             getUser['moodle_repo_id'] = 5
