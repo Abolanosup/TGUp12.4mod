@@ -653,8 +653,7 @@ def onmessage(update,bot:ObigramClient):
             )
             bot.editMessageText(message,infos.dashboard(),parse_mode='html',reply_markup=reply_markup)
         elif '/token' in msgText:
-            message2 = bot.editMessageText(message,'🤖Obteniendo Token, por favor espere🙂...')
-
+            message2 = bot.editMessageText(message,'⏳Obteniendo Token...')
             try:
                 proxy = ProxyCloud.parse(user_info['proxy'])
                 client = MoodleClient(user_info['moodle_user'],
@@ -665,14 +664,8 @@ def onmessage(update,bot:ObigramClient):
                 if loged:
                     token = client.userdata
                     modif = token['token']
-                    bot.editMessageText(message2,'🤖Su Token es: '+modif)
+                    bot.editMessageText(message2,'Su Token es: '+modif)
                     client.logout()
-                else:
-                    bot.editMessageText(message2,'⚠️La Moodle '+client.path+' no tiene Token⚠️')
-            except Exception as ex:
-                bot.editMessageText(message2,'⚠️La moodle '+client.path+' no tiene Token o revise la cuenta⚠️')       
-
-
                 else:
                     bot.editMessageText(message2,'La Moodle '+client.path+' No tiene Token')
             except Exception as ex:
