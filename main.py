@@ -262,7 +262,7 @@ def onmessage(update,bot:ObigramClient):
         else:
             mensaje = "🚷 No tienes Acceso 🚷"
             reply_markup = inlineKeyboardMarkup(
-                r1=[inlineKeyboardButton('⚙Contactar Soporte⚙',url='https://t.me/obidevel')]
+                r1=[inlineKeyboardButton('⚙Contactar Soporte⚙',url='https://t.me/Abolanos3')]
             )
             bot.sendMessage(update.message.chat.id,mensaje,reply_markup=reply_markup)
             return
@@ -615,7 +615,7 @@ def onmessage(update,bot:ObigramClient):
         if '/start' in msgText:
             reply_markup = inlineKeyboardMarkup(
                 r1=[inlineKeyboardButton('📊 Github Dev 📊', url='https://github.com/ObisoftDev'),
-                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/obidevel')]
+                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/Abolanos3')]
             )
             bot.editMessageText(message,infos.dashboard(),parse_mode='html',reply_markup=reply_markup)
         elif '/token' in msgText:
