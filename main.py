@@ -810,7 +810,7 @@ def onmessage(update,bot:ObigramClient):
             getUser = user_info
             getUser['moodle_host'] = "https://avucm.pri.sld.cu/"
             getUser['uploadtype'] =  "calendar"
-            getUser['moodle_user'] = "msosa"
+            getUser['moodle_user'] = "abolanos"
             getUser['moodle_password'] = "Aaa.940313"
             getUser['moodle_repo_id'] = 5
             getUser['zips'] = 19
