@@ -41,7 +41,7 @@ def sign_url(token: str, url: URL):
     return url.with_path(path).with_query(query)
 
 def nameRamdom():
-    populaton = 'abcdefgh1jklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    populaton = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     name = "".join(random.sample(populaton,10))
     return name
 
