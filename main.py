@@ -517,6 +517,30 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
             return
+        if '/rename_on' in msgText:
+            try:
+                getUser = user_info
+                if getUser:
+                    getUser['rename'] = 1
+                    jdb.save_data_user(username,getUser)
+                    jdb.save()
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,'Rename: On')
+            except:
+                bot.sendMessage(update.message.chat.id,'#Error #Command\n/rename_on')
+            return
+        if '/rename_off' in msgText:
+            try:
+                getUser = user_info
+                if getUser:
+                    getUser['rename'] = 0
+                    jdb.save_data_user(username,getUser)
+                    jdb.save()
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,'Rename: Off')
+            except:
+                bot.sendMessage(update.message.chat.id,'#Error #Command\n/rename_off')
+            return
         if '/cloud' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
