@@ -379,6 +379,16 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
+        if '/viewdb' in msgText:
+            isadmin = jdb.is_admin(username)
+            if isadmin:
+                db = open('database.jdb','r')
+                bot.sendMessage(update.message.chat.id,db.read())
+                db.close()
+            else:
+                bot.sendMessage(update.message.chat.id,'No Tiene Permiso')
+            return
+        # end
 
         # comandos de usuario
         if '/tutorial' in msgText:
