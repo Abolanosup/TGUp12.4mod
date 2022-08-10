@@ -804,7 +804,7 @@ def onmessage(update,bot:ObigramClient):
             jdb.save_data_user(username,getUser)
             jdb.save()
             statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-            bot.editMessageText(message,"✅Configuracion de Cursos cargada")
+            bot.editMessageText(message,"✅Configuracion de aula.ucm.grm cargada")
         
         elif '/pri' in msgText:
             getUser = user_info
