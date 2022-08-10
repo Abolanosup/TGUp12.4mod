@@ -201,7 +201,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         if user_info['proxy'] != '':
             datacallback += '|' + user_info['proxy']
         datacallback = S5Crypto.encrypt(datacallback)
-        finishInfo = infos.createFinishUploading(name,file_size,datacallback)
+        finishInfo = infos.createFinishUploading(name,file_size)
         if len(files) > 0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             markup_array.append([inlineKeyboardButton('✎Crear TxT✎',callback_data='/maketxt '+txtname),
@@ -417,7 +417,7 @@ def onmessage(update,bot:ObigramClient):
                 reply_markup = None
                 if user_info['proxy'] != '':
                     reply_markup = inlineKeyboardMarkup(
-                        r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy '+username)]
+                        r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy'+username)]
                     )
                 bot.sendMessage(update.message.chat.id,statInfo,reply_markup=reply_markup)
                 return
@@ -634,7 +634,7 @@ def onmessage(update,bot:ObigramClient):
                     reply_markup = None
                     if user_info['proxy'] != '':
                         reply_markup = inlineKeyboardMarkup(
-                            r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy ' + username)]
+                            r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy' + username)]
                         )
                     bot.sendMessage(update.message.chat.id,statInfo,reply_markup=reply_markup)
             except:
@@ -793,14 +793,14 @@ def onmessage(update,bot:ObigramClient):
             statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
             bot.editMessageText(message,"✅Configuracion de Evea cargada")
         
-        elif '/cursos' in msgText:
+        elif '/grm' in msgText:
             getUser = user_info
-            getUser['moodle_host'] = "https://cursos.uo.edu.cu/"
-            getUser['uploadtype'] =  "calendario"
-            getUser['moodle_user'] = "---"
-            getUser['moodle_password'] = "---"
-            getUser['moodle_repo_id'] = 4
-            getUser['zips'] = 98
+            getUser['moodle_host'] = "https://aula.ucm.grm.sld.cu/"
+            getUser['uploadtype'] =  "draft"
+            getUser['moodle_user'] = "meliodas1"
+            getUser['moodle_password'] = "@Natsu1234"
+            getUser['moodle_repo_id'] = 5
+            getUser['zips'] = 19
             jdb.save_data_user(username,getUser)
             jdb.save()
             statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
