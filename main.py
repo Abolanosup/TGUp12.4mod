@@ -719,6 +719,12 @@ def onmessage(update,bot:ObigramClient):
                 bot.editMessageText(message,'Archivo Borrado 🦶')
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
+        elif '/download' in msgText:
+            obten_name = msgText.split(" ")[1]
+            url = msgText.split(" ")[2]
+            ddl(update,bot,message,url,obten_name,file_name='',thread=thread,jdb=jdb)
+        ###################################################################
+
         ###################################################################
        
         elif '/delete_config' in msgText:
