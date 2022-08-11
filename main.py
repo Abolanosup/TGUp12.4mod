@@ -234,6 +234,12 @@ def sendTxt(name,files,update,bot):
                 txt.close()
                 bot.sendFile(update.message.chat.id,name)
                 os.unlink(name)
+def ddl(update,bot,message,url,obten_name,file_name='',thread=None,jdb=None):
+    downloader = Downloader()
+    file = downloader.download_url(url,progressfunc=downloadFile,args=(bot,message,thread))
+    if not downloader.stoping:
+        if file:
+            processFile(update,bot,message,file,obten_name,jdb=jdb)
 
 def onmessage(update,bot:ObigramClient):
     try:
