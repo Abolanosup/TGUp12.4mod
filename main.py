@@ -138,21 +138,19 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
         bot.editMessageText(message,f'❌Error {str(ex)}❌')
         return None,ex
 
-
-def processFile(update,bot,message,file,thread=None,jdb=None):
-    user_info = jdb.get_user(update.message.sender.username)
-    name =''
-    if user_info['rename'] == 1:
-        ext = file.split('.')[-1]
-        if '7z.' in file:
-            ext1 = file.split('.')[-2]
-            ext2 = file.split('.')[-1]
-            name = nameRamdom() + '.'+ext1+'.'+ext2
-        else:
-            name = nameRamdom() + '.'+ext
+def processFile(update,bot,message,file,obten_name,thread=None,jdb=None):
+    file_size = get_file_size(file)
+    ext = file.split('.')[-1]
+    if '7z.' in file:
+        ext1 = file.split('.')[-2]
+        ext2 = file.split('.')[-1]
+        name = obten_name + '.'+ext1+'.'+ext2
+        
     else:
-        name = file
+        name = obten_name + '.'+ext
+        
     os.rename(file,name)
+    print(name)
     file_size = get_file_size(name)
     getUser = jdb.get_user(update.message.sender.username)
     max_file_size = 1024 * 1024 * getUser['zips']
