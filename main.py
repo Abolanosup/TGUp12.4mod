@@ -1,3 +1,4 @@
+
 from cProfile import run
 import pstats
 from pyobigram.utils import sizeof_fmt,get_file_size,createID,nice_time
@@ -41,7 +42,7 @@ def sign_url(token: str, url: URL):
     return url.with_path(path).with_query(query)
 
 def nameRamdom():
-    populaton = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    populaton = 'abcdefgh1jklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     name = "".join(random.sample(populaton,10))
     return name
 
@@ -138,6 +139,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
         bot.editMessageText(message,f'❌Error {str(ex)}❌')
         return None,ex
 
+
 def processFile(update,bot,message,file,thread=None,jdb=None):
     user_info = jdb.get_user(update.message.sender.username)
     name =''
@@ -200,7 +202,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         if user_info['proxy'] != '':
             datacallback += '|' + user_info['proxy']
         datacallback = S5Crypto.encrypt(datacallback)
-        finishInfo = infos.createFinishUploading(name,file_size)
+        finishInfo = infos.createFinishUploading(name,file_size,datacallback)
         if len(files) > 0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             markup_array.append([inlineKeyboardButton('✎Crear TxT✎',callback_data='/maketxt '+txtname),
@@ -233,12 +235,6 @@ def sendTxt(name,files,update,bot):
                 txt.close()
                 bot.sendFile(update.message.chat.id,name)
                 os.unlink(name)
-def ddl(update,bot,message,url,obten_name,file_name='',thread=None,jdb=None):
-    downloader = Downloader()
-    file = downloader.download_url(url,progressfunc=downloadFile,args=(bot,message,thread))
-    if not downloader.stoping:
-        if file:
-            processFile(update,bot,message,file,obten_name,jdb=jdb)
 
 def onmessage(update,bot:ObigramClient):
     try:
@@ -267,7 +263,7 @@ def onmessage(update,bot:ObigramClient):
         else:
             mensaje = "🚷 No tienes Acceso 🚷"
             reply_markup = inlineKeyboardMarkup(
-                r1=[inlineKeyboardButton('⚙Contactar Soporte⚙',url='https://t.me/Abolanos3')]
+                r1=[inlineKeyboardButton('⚙Contactar Soporte⚙',url='https://t.me/obidevel')]
             )
             bot.sendMessage(update.message.chat.id,mensaje,reply_markup=reply_markup)
             return
@@ -384,16 +380,6 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
-        if '/viewdb' in msgText:
-            isadmin = jdb.is_admin(username)
-            if isadmin:
-                db = open('database.jdb','r')
-                bot.sendMessage(update.message.chat.id,db.read())
-                db.close()
-            else:
-                bot.sendMessage(update.message.chat.id,'No Tiene Permiso')
-            return
-        # end
 
         # comandos de usuario
         if '/tutorial' in msgText:
@@ -422,7 +408,7 @@ def onmessage(update,bot:ObigramClient):
                 reply_markup = None
                 if user_info['proxy'] != '':
                     reply_markup = inlineKeyboardMarkup(
-                        r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy'+username)]
+                        r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy '+username)]
                     )
                 bot.sendMessage(update.message.chat.id,statInfo,reply_markup=reply_markup)
                 return
@@ -639,7 +625,7 @@ def onmessage(update,bot:ObigramClient):
                     reply_markup = None
                     if user_info['proxy'] != '':
                         reply_markup = inlineKeyboardMarkup(
-                            r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy' + username)]
+                            r1=[inlineKeyboardButton('✘ Quitar Proxy ✘', callback_data='/deleteproxy ' + username)]
                         )
                     bot.sendMessage(update.message.chat.id,statInfo,reply_markup=reply_markup)
             except:
@@ -654,7 +640,7 @@ def onmessage(update,bot:ObigramClient):
         if '/start' in msgText:
             reply_markup = inlineKeyboardMarkup(
                 r1=[inlineKeyboardButton('📊 Github Dev 📊', url='https://github.com/ObisoftDev'),
-                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/Abolanos3')]
+                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/obidevel')]
             )
             bot.editMessageText(message,infos.dashboard(),parse_mode='html',reply_markup=reply_markup)
         elif '/token' in msgText:
@@ -725,8 +711,6 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
         ###################################################################
-
-        ###################################################################
        
         elif '/delete_config' in msgText:
             getUser = user_info
@@ -750,6 +734,7 @@ def onmessage(update,bot:ObigramClient):
             bot.editMessageText(message,"🗑Proxy Eliminado🗑")
         ###############################################################
         
+        elif '/aulacened' in msgText:
         elif '/aulacened' in msgText:
             getUser = user_info
             getUser['moodle_host'] = "https://aulacened.uci.cu/"
